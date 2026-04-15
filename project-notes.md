@@ -21,6 +21,19 @@ Entries are grouped by state:
 ---
 ## Graduated
 
+### Authoring for R1 executors passes a locus test. 
+
+The R1 build produces the phased decomposition skill. The skill is consumed by Claude instances running downstream projects through the framework; those instances are skill-execution-time Claude. The build itself runs producer, supervisor, and coordinator executors; those are build-time Claude.
+
+Before an instruction lands in `producer.md`, `supervisor.md`, or `CLAUDE.md`, it passes a test: _does this instruction govern build-time Claude or skill-execution-time Claude?_
+
+- Governs build-time Claude → stays in the executor definition.
+- Governs skill-execution-time Claude → belongs in the skill's own files (`SKILL.md`, `references/`, calibrator profiles), authored by the producer as output.
+
+Failure mode: instructions written for skill-execution-time Claude get placed in build-time executor definitions because they feel like standards the executor should follow. "Voice is scribe" in the producer is the canonical example — scribe is a role governing skill-execution-time Claude authoring artifacts inside a running project, not a standard the producer's skill-authoring work follows. Build-time Claude's standards come from `skill-creator`, which is external to the framework.
+
+Third-category trap: instructions that govern skill-execution-time Claude but are enforceable at build time via evals. Their home is still the skill's own files. Enforcement of a skill-execution-time instruction happens through the eval suite and work-package test plans, which the producer reads as work package input — not as standing guidance. Enforceability is not locus.
+
 ### Parent artifacts link to child artifacts via stub sections
 
 When a parent artifact owns navigation for a child artifact (release-level siblings the parent activates, e.g. roadmap → test plan, roadmap → schedule), the parent gets a stub section whose body is a single link line to the child:
