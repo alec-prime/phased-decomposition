@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Obsidian (shouldn't exist at this level, but defensive)
+.obsidian/
+.trash/
+
+# Editor cruft
+*.swp
+*~
+.vscode/
