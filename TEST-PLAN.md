@@ -1,17 +1,14 @@
 ---
-
-artifact: test-plan 
-phase: 2 
-project: "[[Phased Decomposition]]" 
-release: R1 
-status: draft 
-created: 2026-04-14 
-framework_version: 0.1.0 
+artifact: test-plan
+phase: 2
+project: "[[Phased Decomposition]]"
+release: R1
+status: in-review
+created: 2026-04-14
+framework_version: 0.1.0
 descends_from:
-
-- "[[ROADMAP]]"
-- "[[MOCKUP]]"
-
+  - "[[ROADMAP]]"
+  - "[[MOCKUP]]"
 ---
 # Release-Level Test Plan — Phased Decomposition R1
 
@@ -27,19 +24,19 @@ This collapse is deliberate. Release validation is what the operator does _with_
 
 The table below commits the checks the operator performs during validation. Rows are sorted by project. `traces_to` names a parent test row by id when one exists; release-level rows have no parent and the column is empty, but the schema is preserved so Phase 4 spec-level and Phase 5 task-level test plans can name these rows as their parents.
 
-| id | check | traces_to | status | operator_signoff |
-|---|---|---|---|---|
-| R1-TP-01 | Skill triggers and loads on a cold-start request for March | — | pending | |
-| R1-TP-02 | March kernel is surfaced by the operator in their own words, not proposed by Claude | — | pending | |
-| R1-TP-03 | Interrogator runs the section sweep against March before production | — | pending | |
-| R1-TP-04 | Sections the operator did not ground for March are stubbed rather than invented | — | pending | |
-| R1-TP-05 | March `concept.md` is legible to a cold reader against `MOCKUP` Scene 1 as reference standard | — | pending | |
-| R1-TP-06 | Skill triggers and loads on a cold-start request for Nell | — | pending | |
-| R1-TP-07 | Nell kernel is surfaced by the operator in their own words, not proposed by Claude | — | pending | |
-| R1-TP-08 | Interrogator runs the section sweep against Nell before production | — | pending | |
-| R1-TP-09 | Sections the operator did not ground for Nell are stubbed rather than invented | — | pending | |
-| R1-TP-10 | Nell `concept.md` is legible to a cold reader against `MOCKUP` Scene 1 as reference standard | — | pending | |
-| R1-TP-11 | Failures encountered during either run are resolved in the skill or logged as accepted limitations with operator review | — | pending | |
+| id       | check                                                                                                                   | traces_to | status  | operator_signoff |
+| -------- | ----------------------------------------------------------------------------------------------------------------------- | --------- | ------- | ---------------- |
+| R1-TP-01 | Skill triggers and loads on a cold-start request for March                                                              | —         | pending |                  |
+| R1-TP-02 | March kernel is surfaced by the operator in their own words, not proposed by Claude                                     | —         | pending |                  |
+| R1-TP-03 | Interrogator runs the section sweep against March before production                                                     | —         | pending |                  |
+| R1-TP-04 | Sections the operator did not ground for March are stubbed rather than invented                                         | —         | pending |                  |
+| R1-TP-05 | March `concept.md` is legible to a cold reader against `MOCKUP` Scene 1 as reference standard                           | —         | pending |                  |
+| R1-TP-06 | Skill triggers and loads on a cold-start request for Nell                                                               | —         | pending |                  |
+| R1-TP-07 | Nell kernel is surfaced by the operator in their own words, not proposed by Claude                                      | —         | pending |                  |
+| R1-TP-08 | Interrogator runs the section sweep against Nell before production                                                      | —         | pending |                  |
+| R1-TP-09 | Sections the operator did not ground for Nell are stubbed rather than invented                                          | —         | pending |                  |
+| R1-TP-10 | Nell `concept.md` is legible to a cold reader against `MOCKUP` Scene 1 as reference standard                            | —         | pending |                  |
+| R1-TP-11 | Failures encountered during either run are resolved in the skill or logged as accepted limitations with operator review | —         | pending |                  |
 
 ## Test Plan Closure
 

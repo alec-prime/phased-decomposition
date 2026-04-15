@@ -141,16 +141,6 @@ _Two candidate answers._ `CLAUDE.md` only — treats `CLAUDE.md` as a complete c
 
 _Graduation trigger._ R1's calibrator runs against `CLAUDE.md` with references available as fallback. Observe which it actually reaches for. Whichever holds graduates; the other expels.
 
-### Work-package-scoped subagents with memory as durability layer (R1)
-
-R1's producer and supervisor are Claude Code subagents scoped to a single work package. Within a work package, iterations resume the same subagent instance so the producer carries context from prior failed attempts into the next. A token-budget threshold acts as a safety valve: if accumulated context bloats mid-package, the session ends and a fresh subagent spawns for the remaining work. Across work packages, the `memory` field captures learnings — producer notes on resolved ambiguities, supervisor calibration notes on failure modes — for future packages to consume.
-
-_What's committed._ The scoping rule (work-package-bounded) and the durability layer (`memory` for cross-package state). The architectural shape is firm.
-
-_What's deferred._ Exact mechanics: token threshold value, what specifically gets written to memory and by which agent, how mid-package handoffs structure their state between the ending and the fresh subagent, whether the supervisor has its own memory or shares the producer's. All of this is `CLAUDE.md`-authoring detail.
-
-_Graduation trigger._ `CLAUDE.md` is authored with the mechanics committed, and R1 execution holds against the committed mechanics without requiring mid-execution revisions to the agent definitions.
-
 ### This project is meta
 
 The phased decomposition project produces a skill. Its artifacts — `concept.md`, `northstar.md`, `mockup.md`, `roadmap.md`, and everything downstream — are source material for authoring the skill in Phase 6. They are not the skill, not templates the skill bundles, and not documentation future users will ever read. The skill has its own documentation (`SKILL.md`, references, assets, evals) authored fresh against the source artifacts, under constraints (500-line body budget, theory-of-mind voice, progressive disclosure, trigger-phrase optimization) that do not apply to the source artifacts.
@@ -211,3 +201,13 @@ _Graduation trigger._ `architecture.md` is drafted against a section list descen
 ### Phase 0: the schedule section
 
 _Expelled 2026-04-14._ Proposed a Schedule section in `concept.md` committing cadence, next contact, and horizon. Superseded by the decision that release schedules are release-activation artifacts belonging to Phase 2, not Phase 0. The underlying concern (projects rotting because nothing forces contact with the operator's calendar) is now handled at the release level where the commitment actually binds to work, rather than at the project level where it would float above the execution layer.
+
+### Work-package-scoped subagents with memory as durability layer (R1) [Expelled]
+
+R1's producer and supervisor are Claude Code subagents scoped to a single work package. Within a work package, iterations resume the same subagent instance so the producer carries context from prior failed attempts into the next. A token-budget threshold acts as a safety valve: if accumulated context bloats mid-package, the session ends and a fresh subagent spawns for the remaining work. Across work packages, the `memory` field captures learnings — producer notes on resolved ambiguities, supervisor calibration notes on failure modes — for future packages to consume.
+
+_What's committed._ The scoping rule (work-package-bounded) and the durability layer (`memory` for cross-package state). The architectural shape is firm.
+
+_What's deferred._ Exact mechanics: token threshold value, what specifically gets written to memory and by which agent, how mid-package handoffs structure their state between the ending and the fresh subagent, whether the supervisor has its own memory or shares the producer's. All of this is `CLAUDE.md`-authoring detail.
+
+_Graduation trigger._ `CLAUDE.md` is authored with the mechanics committed, and R1 execution holds against the committed mechanics without requiring mid-execution revisions to the agent definitions.
