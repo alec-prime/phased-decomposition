@@ -3,12 +3,11 @@ artifact: test-plan
 phase: 2
 project: "[[Phased Decomposition]]"
 release: R1
-status: in-review
+status: approved
 created: 2026-04-14
 framework_version: 0.1.0
 descends_from:
-  - "[[ROADMAP]]"
-  - "[[MOCKUP]]"
+  - "[[RELEASE]]"
 ---
 # Release-Level Test Plan — Phased Decomposition R1
 

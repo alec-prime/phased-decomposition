@@ -1,16 +1,13 @@
 ---
-
-artifact: release 
-phase: 2 
-project: "[[Phased Decomposition]]" 
-release: R1 
-status: draft 
-created: 2026-04-14 
-framework_version: 0.1.0 
+artifact: release
+phase: 2
+project: "[[Phased Decomposition]]"
+release: R1
+status: approved
+created: 2026-04-14
+framework_version: 0.1.0
 descends_from:
-
-- "[[ROADMAP]]"
-
+  - "[[ROADMAP]]"
 ---
 # Release — Phased Decomposition R1
 

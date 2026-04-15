@@ -3,7 +3,7 @@ artifact: roadmap
 phase: 0
 project: "[[Phased Decomposition]]"
 release:
-status: draft
+status: approved
 created: 2026-04-13
 framework_version: 0.1.0
 descends_from:
