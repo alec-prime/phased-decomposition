@@ -25,46 +25,28 @@ This collapse is deliberate. Release validation is what the operator does _with_
 
 **Dogfooding artifact quality.** A fresh Claude session running the [[Projects/Phased Decomposition/CONCEPT|phased decomposition]] skill against March and Nell produces Phase 0 artifacts the operator judges sufficient against the corresponding scenes in [[MOCKUP|mockup]]. The operator is the gate; the mockup scenes are the reference standard. Both runs must clear operator review, or their failures must be explicitly accepted and logged in `SKILL.md` or its references, before R1 ships.
 
-The outcome decomposes into three observable conditions, each of which the operator confirms as part of validation:
+The table below commits the checks the operator performs during validation. Rows are sorted by project. `traces_to` names a parent test row by id when one exists; release-level rows have no parent and the column is empty, but the schema is preserved so Phase 4 spec-level and Phase 5 task-level test plans can name these rows as their parents.
 
-- _March Phase 0 run produces a `concept.md` the operator finds sufficient._ Sufficient is judged against Scene 1 in the mockup as the reference standard. The kernel is surfaced by the operator in their own words rather than proposed by Claude; the section sweep produces grounded sections; sections the operator did not ground are stubbed rather than invented.
-- _Nell Phase 0 run produces a `concept.md` the operator finds sufficient._ Same standard, applied to a different project type. Nell is included specifically because it is a different shape of project from March; passing both is the first evidence the framework's project-type generalization claim holds for the two stress-tested cases.
-- _Failures encountered during either run are either resolved in the skill or explicitly accepted as logged limitations._ A failure is anything the operator notices that the skill should have caught or guided differently. Resolution means the skill is amended and the run is re-attempted; acceptance means the limitation is logged in `SKILL.md` or its references with the logging itself reviewed by the operator. The release does not close on silent failures.
-
-## What This Plan Does Not Bind
-
-Naming the things this plan deliberately leaves open, so downstream phases do not interpret silence as prohibition or as requirement.
-
-- _Mechanism-level evals._ Phase 3 architecture may commit an eval suite, may not, or may commit a smaller version than the prior architecture draft proposed. This plan does not require an eval suite to exist for R1 to ship. If Phase 3 commits one, its threshold and contents are Phase 3's call; if it does not, the dogfooding outcome alone validates the release.
-- _The draft→test→refine loop's internal gates._ The loop runs in Phase 6 against whatever supervisor standards Phase 5 commits. This plan does not name those standards; they descend from Phase 5's eval authoring, not from here.
-- _Trigger rate measurement._ §Binding quality standard in [[ROADMAP|roadmap]] names trigger optimization as a Phase 3/5/6 activity. This plan does not commit a trigger rate threshold or a measurement method. Both descend downstream.
-- _Per-phase mechanism checks beyond Phase 0._ Dogfooding only stress-tests Phase 0 because March and Nell are at the cold-start point. R1 does not validate the skill against Phases 1–6 because no dogfooding project has reached them within R1's window. This is an accepted limitation, not a gap in the plan.
-
-## What Failure Looks Like
-
-A failure of the dogfooding outcome takes one of three shapes. Each routes differently.
-
-- _The skill fails to trigger or fails to load when it should._ The fresh Claude session does not invoke the skill against the dogfooding project. Routes to a description-tuning loop (mechanism check, but the operator surfaces it through the dogfooding attempt rather than through a separate eval). Skill is amended; run is re-attempted.
-- _The skill triggers but produces a `concept.md` the operator judges insufficient._ The artifact came out, the operator does not find it good enough against the mockup scenes. Routes to skill content revision — `SKILL.md`, the relevant phase reference file, or the relevant template. The diagnosis (which file is wrong, what about it is wrong) is the operator's call, with the failed artifact as evidence.
-- _The skill triggers and produces an artifact the operator judges sufficient on the surface, but the operator notices a downstream-affecting issue._ The kernel is plausible but not the right kernel; a section is grounded but the grounding mechanism was Claude proposing rather than the operator naming. Routes to either skill revision (if the skill should have caught it) or accepted-limitation logging (if the failure is at a level the skill cannot reasonably catch). The acceptance route is the escape valve that prevents the release from being held hostage to perfection.
-
-## Out of Scope
-
-- _Generalization beyond March and Nell._ R1 does not test the framework's claim of generalizing across project types beyond what dogfooding stress-tests. Per `[[ROADMAP]]` §Scope exclusions, this is an accepted risk, not a gated outcome.
-- _Validation of Phases 1–6._ Dogfooding only covers Phase 0 because March and Nell are at cold start. R1 ships with the framework's later phases unvalidated against fresh projects. This is an accepted limitation.
-- _Performance, latency, token cost._ R1 ships a markdown skill; performance properties are out of scope for release validation.
-- _Comparison against alternative frameworks._ R1 is held to its own standard, not to a competitive standard.
+| id | check | traces_to | status | operator_signoff |
+|---|---|---|---|---|
+| R1-TP-01 | Skill triggers and loads on a cold-start request for March | — | pending | |
+| R1-TP-02 | March kernel is surfaced by the operator in their own words, not proposed by Claude | — | pending | |
+| R1-TP-03 | Interrogator runs the section sweep against March before production | — | pending | |
+| R1-TP-04 | Sections the operator did not ground for March are stubbed rather than invented | — | pending | |
+| R1-TP-05 | March `concept.md` is legible to a cold reader against `MOCKUP` Scene 1 as reference standard | — | pending | |
+| R1-TP-06 | Skill triggers and loads on a cold-start request for Nell | — | pending | |
+| R1-TP-07 | Nell kernel is surfaced by the operator in their own words, not proposed by Claude | — | pending | |
+| R1-TP-08 | Interrogator runs the section sweep against Nell before production | — | pending | |
+| R1-TP-09 | Sections the operator did not ground for Nell are stubbed rather than invented | — | pending | |
+| R1-TP-10 | Nell `concept.md` is legible to a cold reader against `MOCKUP` Scene 1 as reference standard | — | pending | |
+| R1-TP-11 | Failures encountered during either run are resolved in the skill or logged as accepted limitations with operator review | — | pending | |
 
 ## Test Plan Closure
 
-The test plan closes when all three observable conditions in §The Outcome hold:
-
-- March Phase 0 run cleared.
-- Nell Phase 0 run cleared.
-- All encountered failures resolved in the skill or logged as accepted limitations with operator review.
-
-R1 ships when this plan closes and the conditions in `[[ROADMAP]]` §Definition of R1 done hold.
+The plan closes when every row in §The Outcome is `passed` or `accepted-limitation` with operator signoff recorded, and the conditions in `[[ROADMAP]]` §Definition of R1 done hold.
 
 ## Changelog
+
+- **2026-04-14 — Outcome restructured as a traceable table.** §The Outcome reworked from prose-with-bulleted-conditions into a row-per-test table. Schema: `id | check | traces_to | status | operator_signoff`. Eleven rows committed, sorted by project (March block, Nell block, R1-wide row at end). `traces_to` holds parent test ids for downstream child plans; release-level rows have no parent so the column is empty, but the schema is preserved so Phase 4 and Phase 5 test plans can name these rows as parents. §Test Plan Closure rewrote to reference row status and operator signoff instead of the prior three-condition decomposition. _Why:_ the prior structure committed the same substance but as prose, which made the plan unusable as a traceability anchor — downstream plans had no row ids to point at. _Affects:_ §The Outcome, §Test Plan Closure.
 
 - **2026-04-14 — Initial authoring.** Authored as a Phase 2 release-activation sibling artifact alongside the [[ROADMAP|roadmap]] amendment of the same date. Initially drafted as a roadmap subsection; relocated to a sibling file when the operator caught the category error. The test plan commits to one outcome by deliberate collapse of an earlier proposal that bound mechanism-level checks at the release level. The collapse descends from the operator's framing that release validation is what happens _with_ the shipped skill, not inside the build loop.
