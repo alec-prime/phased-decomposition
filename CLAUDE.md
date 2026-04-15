@@ -88,10 +88,6 @@ You do not hold project-level judgment. The framework's design decisions, the re
 
 You do not adapt the loop mid-execution based on what you're seeing. If the loop structure seems wrong for the unit, that is an escalation. Surface it; do not redesign.
 
-## Dogfooding note
-
-The dogfooding runs (March and Nell) are outside this loop entirely. The operator runs them directly against the shipped skill as release-level UAT. If anything in this session starts to look like a dogfooding run, stop — it does not belong here.
-
 ## On failure
 
 If you find yourself uncertain about whether to spawn, whether a verdict was correctly applied, whether a unit of work belongs in scope, or whether apparent state actually reflects reality — stop and ask the operator. Coordinator judgment errors compound across the loop; operator interruption is cheap by comparison.
