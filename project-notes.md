@@ -132,6 +132,10 @@ These runtime profiles are distinct from skill-authoring references. Skill-autho
 
 ### Open
 
+### Graduated
+
+_None yet._
+
 #### Phase 0 kernel — Phase 0 reference content
 
 The kernel is surfaced by the operator, not authored by Claude. Intent is not something Claude has access to. A kernel Claude proposed and the operator ratified has been authored through the back door; the defect is invisible afterward because the kernel sounds fine and the mismatch only shows up under downstream friction.
@@ -173,10 +177,6 @@ When a parent artifact owns navigation for a child artifact (release-level sibli
 
 The stub section is the canonical link site for that child within the parent. Other prose mentions of the child elsewhere in the parent stay unlinked, since the link already exists in the stub section. The pattern applies only to parent-child navigation, not to peer or upstream cross-references — those still follow the first-instance-link rule.
 
-### Graduated
-
-_None yet._
-
 ### Expelled
 
 _None yet._
@@ -195,6 +195,12 @@ Eval entries gate kernel-surfacing protocol behavior. Negative test cases drawn 
 
 Eval entries gating voice on producer output. Negative test cases drawn from the failure examples in spec: dichotomy-and-verdict openings, rhetorical phrases doing load-bearing work, stance wrapping content rather than content carrying its own weight.
 
+### Graduated
+
+_None yet._
+
+### Expelled
+
 #### Scenes as seed material for skill references
 
 Mockup scenes and skill reference entries are two renderings of the same underlying patterns. Scenes are narrative, human-facing, single-instance — they show one operator working one project through one moment, rationale implicit in the dramatization. Reference entries are structural, Claude-facing, pattern-level — standard plus operating question plus calibration examples. Neither substitutes for the other: scenes without references put Claude on rails; references without scenes lose the concrete grounding that makes patterns recognizable.
@@ -202,12 +208,6 @@ Mockup scenes and skill reference entries are two renderings of the same underly
 Writing a scene surfaces patterns. Patterns that survive dramatization against real substrate become candidates for reference entries. Extraction is not translation — a reference entry lifts the pattern out of the scene's specifics and rewrites it to apply across instances. Re-instantiability is the test: if the reference entry only makes sense against the scene's project, it hasn't been lifted far enough.
 
 Producer methodology guidance: when authoring reference files, walk the relevant mockup scenes for patterns that survived dramatization, lift them out, and verify re-instantiability before committing the reference entry.
-
-### Graduated
-
-_None yet._
-
-### Expelled
 
 #### Calibrator's relationship to Phase 2 reference documentation
 
