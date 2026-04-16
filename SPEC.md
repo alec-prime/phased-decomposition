@@ -11,19 +11,6 @@ descends_from:
 ---
 # Spec — Phased Decomposition R1
 
-## Shape of This Spec
-
-Phase 4 packages architecture into executable form. This document commits:
-- `SKILL.md` body structure and section layout
-- Per-phase role application (interrogator, scribe, calibrator) with operating questions and failure examples
-- Asset template specifications — structure and field-level guidance sufficient for the producer to author each correctly
-- Phase 5 terminal artifact structure — `work-instructions.md`, `execution-plan.json`, work package files, and Todoist load operation
-- Execution configuration — runtime inputs the coordinator confirms with the operator at session start
-
-Phase 4 stops before: prose authoring of reference files, eval entry authoring (Phase 5), description field optimization (Phase 5).
-
----
-
 ## SKILL.md Body Structure
 
 Target: under 500 lines. The body is a router, not a repository. Every section below is required; order is fixed.
