@@ -85,9 +85,9 @@ Tier follows where mistakes hide. Phases 0, 1, 2, and 5 originate commitments do
 
 Three universal roles: interrogator, scribe, calibrator.
 
-**Role definitions in SKILL.md body, not in `references/`.** Standards are universal across phases and need to be in Claude's context from the moment the skill triggers, not loaded on-demand.
+**Role definitions in SKILL.md body, not in `references/`.** Standards run across phases 0–5 and need to be in Claude's context from the moment the skill triggers, not loaded on-demand.
 
-The body must hold them to the operating-question + failure-examples shape committed in `project-notes.md`. 
+The body must hold them to the operating-question + failure-examples shape committed in `project-notes.md`.
 
 **Phase guides invoke roles by name, not by definition.** Each phase reference file names which roles run during that phase and what they do in that phase's specific context. The phase guide assumes SKILL.md established what each role is; the phase guide commits where each role applies and what its output for that phase looks like.
 
@@ -154,12 +154,6 @@ Each escalation produces an amendment to the named artifact and re-derivation of
 
 Bound autonomous coordinator operation. Set per session by the operator at session start per `CLAUDE.md` § Session walls.
 
-## Dogfooding boundary
-
-March and Nell runs are outside the producer/supervisor loop. They are operator-direct against the shipped skill, judged against `[[MOCKUP]]` Scene 1 as the reference standard per `[[TEST-PLAN]]`.
-
-If anything Phase 5 hands to the coordinator looks like dogfooding work, that is a handoff error. The coordinator flags to the operator rather than spawning against it.
-
 ## Test plan layers
 
 Two layers, parallel rather than parent-child.
@@ -176,7 +170,7 @@ Eval suite entries do not have `traces_to` pointing at `[[TEST-PLAN]]` rows.
 - _Description trigger rate_ — held-out queries that should invoke the skill do; queries that should not, do not
 - _Phase routing_ — given a phase-mapped request, Claude reaches the correct phase reference file before producing
 - _Reference-file discovery_ — Claude follows reference invocations from phase guides without user prompting
-- _Interrogator-before-production_ — Claude runs the phase's interrogator before drafting any artifact content
+- _Interrogator-before-production_ — phases 0–5 only; Claude runs the phase's interrogator before drafting any artifact content
 - _Kernel-surfacing protocol_ — given a Phase 0 cold start, Claude resists proposing a kernel candidate; failure modes from `project-notes.md` § _Phase 0 — the kernel_ serve as negative test cases
 
 **Downward decomposition.**
