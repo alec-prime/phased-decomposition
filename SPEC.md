@@ -3,7 +3,7 @@ artifact: spec
 phase: 4
 project: "[[Phased Decomposition]]"
 release: R1
-status: in-review
+status: approved
 created: 2026-04-15
 framework_version: 0.1.0
 descends_from:
@@ -567,20 +567,20 @@ Other prose mentions of the child in the parent stay unlinked — the stub is th
 
 Spec-level rows gate individual reference-file and asset correctness. Each row traces to the architecture section or spec section that commits the standard being checked. Mechanism checks (trigger rate, routing, interrogator-before-production) belong to the Phase 5 eval suite, not here.
 
-| id | check | traces_to | status | operator_signoff |
-|---|---|---|---|---|
-| S1-TP-01 | `phase-0-concept-roadmap.md` correctly implements the interrogator kernel-surfacing protocol including all three moves and the recognition criterion | `SPEC.md § Interrogator` | pending | |
-| S1-TP-02 | `phase-0-concept-roadmap.md` correctly implements the section sweep pattern — interrogator runs before production, ungrounded sections stubbed | `SPEC.md § Interrogator` | pending | |
-| S1-TP-03 | `phase-1-northstar-mockup.md` correctly implements the abstraction-vs-instantiation split between northstar and mockup | `SPEC.md § Per-Phase Role Application` | pending | |
-| S1-TP-04 | `phase-2-release-activation.md` correctly implements release artifact descent from roadmap and the activation-vs-mapping distinction | `SPEC.md § Per-Phase Role Application` | pending | |
-| S1-TP-05 | `phase-3-architecture.md` correctly implements the inward-facing register constraint and the interrogator translation pattern | `SPEC.md § Per-Phase Role Application` | pending | |
-| S1-TP-06 | `phase-4-spec.md` correctly implements the architecture-to-spec packaging pattern and the locus rule | `SPEC.md § Per-Phase Role Application` | pending | |
-| S1-TP-07 | `phase-5-execution-planning.md` correctly implements calibrator sizing against executor definitions and the dual-artifact gate | `SPEC.md § Calibrator`, `SPEC.md § Phase 5 Terminal Artifact Structure` | pending | |
-| S1-TP-08 | `phase-6-execution.md` correctly implements the supervisor-as-interrogator pattern and escalation routing | `SPEC.md § Per-Phase Role Application` | pending | |
-| S1-TP-09 | Role definitions in `SKILL.md` body conform to operating-question + failure-examples shape for all three roles | `SPEC.md § Role Definitions` | pending | |
-| S1-TP-10 | All six outward-facing asset templates include required frontmatter fields and required body sections per spec | `SPEC.md § Asset Template Specifications` | pending | |
-| S1-TP-11 | All four inward-facing asset authoring instructions address required topics and omit prescribed-but-excluded content per spec | `SPEC.md § Asset Template Specifications` | pending | |
-| S1-TP-12 | Cross-reference conventions are applied correctly across all produced artifacts — first-instance links, frontmatter lineage, stub sections | `SPEC.md § Cross-Reference Conventions` | pending | |
+| id       | check                                                                                                                                                | traces_to                                                               | status  | operator_signoff |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------- | ---------------- |
+| S1-TP-01 | `phase-0-concept-roadmap.md` correctly implements the interrogator kernel-surfacing protocol including all three moves and the recognition criterion | `SPEC.md § Interrogator`                                                | pending |                  |
+| S1-TP-02 | `phase-0-concept-roadmap.md` correctly implements the section sweep pattern — interrogator runs before production, ungrounded sections stubbed       | `SPEC.md § Interrogator`                                                | pending |                  |
+| S1-TP-03 | `phase-1-northstar-mockup.md` correctly implements the abstraction-vs-instantiation split between northstar and mockup                               | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
+| S1-TP-04 | `phase-2-release-activation.md` correctly implements release artifact descent from roadmap and the activation-vs-mapping distinction                 | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
+| S1-TP-05 | `phase-3-architecture.md` correctly implements the inward-facing register constraint and the interrogator translation pattern                        | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
+| S1-TP-06 | `phase-4-spec.md` correctly implements the architecture-to-spec packaging pattern and the locus rule                                                 | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
+| S1-TP-07 | `phase-5-execution-planning.md` correctly implements calibrator sizing against executor definitions and the dual-artifact gate                       | `SPEC.md § Calibrator`, `SPEC.md § Phase 5 Terminal Artifact Structure` | pending |                  |
+| S1-TP-08 | `phase-6-execution.md` correctly implements the supervisor-as-interrogator pattern and escalation routing                                            | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
+| S1-TP-09 | Role definitions in `SKILL.md` body conform to operating-question + failure-examples shape for all three roles                                       | `SPEC.md § Role Definitions`                                            | pending |                  |
+| S1-TP-10 | All six outward-facing asset templates include required frontmatter fields and required body sections per spec                                       | `SPEC.md § Asset Template Specifications`                               | pending |                  |
+| S1-TP-11 | All four inward-facing asset authoring instructions address required topics and omit prescribed-but-excluded content per spec                        | `SPEC.md § Asset Template Specifications`                               | pending |                  |
+| S1-TP-12 | Cross-reference conventions are applied correctly across all produced artifacts — first-instance links, frontmatter lineage, stub sections           | `SPEC.md § Cross-Reference Conventions`                                 | pending |                  |
 
 ### Test Plan Closure
 
