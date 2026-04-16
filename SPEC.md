@@ -898,10 +898,10 @@ Triggered after operator approves both Phase 5 artifacts at the gate. Operation 
 
 **Configuration — confirmed at session start:**
 
-| Field | Default | Notes |
-|---|---|---|
-| Todoist project name | "Personal" | No default; operator confirms before operation runs |
-| Todoist API key | — | Blocking; coordinator does not proceed until confirmed |
+| Field                | Default                                  | Notes                                                  |
+| -------------------- | ---------------------------------------- | ------------------------------------------------------ |
+| Todoist project name | "Personal"                               | No default; operator confirms before operation runs    |
+| Todoist API key      | 8df1ae04dfe2257231be1df93671bb23dc178774 | Blocking; coordinator does not proceed until confirmed |
 
 **Phase 5 produces `todoist-tasks.json`:**
 
