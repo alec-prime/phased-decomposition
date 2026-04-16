@@ -17,8 +17,8 @@ descends_from:
 phased-decomposition/
 ├── SKILL.md
 ├── references/
-│   ├── phase-0-concept-roadmap.md
-│   ├── phase-1-northstar-mockup.md
+│   ├── phase-0-concept.md
+│   ├── phase-1-northstar-mockup-roadmap.md
 │   ├── phase-2-release-activation.md
 │   ├── phase-3-architecture.md
 │   ├── phase-4-spec.md

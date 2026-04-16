@@ -104,15 +104,15 @@ The protocol is three moves:
 
 Each phase reference file commits which roles run, in what order, and what their output for that phase looks like. Spec commits the per-phase application; reference files author the prose.
 
-| Phase | Interrogator                                                                                                                              | Scribe                                                                                   | Calibrator                                                                                                             |
-| ----- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| 0     | Runs first. Kernel check before section sweep. Kernel-surfacing protocol applies — never names the framework term.                        | Runs at production. Renders operator utterances into concept/roadmap register.           | Not active.                                                                                                            |
-| 1     | Runs first. Checks northstar scenes against concept grounding.                                                                            | Runs at production. Northstar in abstraction register; mockup in instantiation register. | Not active.                                                                                                            |
-| 2     | Runs first. Checks release commitments against roadmap grounding.                                                                         | Runs at production. Release artifact in operator-facing register.                        | Not active.                                                                                                            |
-| 3     | Runs first. Checks each architectural question against upstream grounding. Translates architecture gaps into operator-register questions. | Not active. Architecture artifacts are inward-facing; scribe register does not apply.    | Not active.                                                                                                            |
-| 4     | Runs first. Checks spec commitments against architecture grounding.                                                                       | Not active. Spec is inward-facing.                                                       | Not active.                                                                                                            |
-| 5     | Runs first against spec before decomposition begins.                                                                                      | Not active.                                                                              | Runs during decomposition. Sizes every work package against executor definitions in `CLAUDE.md` and `.claude/agents/`. |
-| 6     | Not active.                                                                                                                               | Not active.                                                                              | Not active.                                                                                                            |
+| Phase | Interrogator                                                                                                                              | Scribe                                                                                                            | Calibrator                                                                                                             |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| 0     | Runs first. Kernel check before section sweep. Kernel-surfacing protocol applies — never names the framework term.                        | Runs at production. Renders operator utterances into concept register.                                            | Not active.                                                                                                            |
+| 1     | Runs first. Checks northstar scenes against concept grounding.Checks roadmap release sequence against concept and illustrated end state.  | Runs at production. Northstar in abstraction register; mockup in instantiation register; roadmap in map register. | Not active.                                                                                                            |
+| 2     | Runs first. Checks release commitments against roadmap grounding.                                                                         | Runs at production. Release artifact in operator-facing register.                                                 | Not active.                                                                                                            |
+| 3     | Runs first. Checks each architectural question against upstream grounding. Translates architecture gaps into operator-register questions. | Not active. Architecture artifacts are inward-facing; scribe register does not apply.                             | Not active.                                                                                                            |
+| 4     | Runs first. Checks spec commitments against architecture grounding.                                                                       | Not active. Spec is inward-facing.                                                                                | Not active.                                                                                                            |
+| 5     | Runs first against spec before decomposition begins.                                                                                      | Not active.                                                                                                       | Runs during decomposition. Sizes every work package against executor definitions in `CLAUDE.md` and `.claude/agents/`. |
+| 6     | Not active.                                                                                                                               | Not active.                                                                                                       | Not active.                                                                                                            |
 
 ---
 
@@ -226,7 +226,7 @@ One section per northstar scene. Each section:
 **Frontmatter:**
 ```yaml
 artifact: roadmap
-phase: 0
+phase: 1
 project: "[[<Project Name>]]"
 release:
 status: draft
@@ -445,41 +445,48 @@ All seven reference files share baseline requirements:
 
 Per-file specifications below commit the additional content each file must address beyond the baseline.
 
-### `phase-0-concept-roadmap.md`
+### `phase-0-concept.md`
 
 **Must address:**
+
 - Kernel-surfacing protocol per § Interrogator, including all three moves (surface framing check, why-does-it-matter push, compression check) and the recognition criterion
 - The section-sweep pattern: interrogator runs the kernel check first, then sweeps remaining concept sections against what the operator has grounded
 - Ungrounded-section handling: sections the operator did not ground are stubbed, not invented
 - Scribe register for concept authoring: science-communicator voice per § Scribe, with failure examples drawn from § Scribe
 - Concept template field rules per § Asset Template Specifications → `concept-template.md`
-- Roadmap as Phase 0 sibling: roadmap commits release sequence and points at release artifacts for activation; does not activate releases
 
 **Must not prescribe:**
+
 - What the kernel of any specific project is — the kernel is operator-surfaced
 - Release activation detail — belongs to Phase 2
+- Roadmap content — belongs to Phase 1
 
-**Source:** `SPEC.md § Interrogator`, `SPEC.md § Scribe`, `SPEC.md § Asset Template Specifications` → `concept-template.md` and `roadmap-template.md`.
+**Source:** `SPEC.md § Interrogator`, `SPEC.md § Scribe`, `SPEC.md § Asset Template Specifications` → `concept-template.md`.
 
-### `phase-1-northstar-mockup.md`
+### `phase-1-northstar-mockup-roadmap.md`
 
 **Must address:**
+
 - Abstraction-vs-instantiation split: northstar at abstraction level (no project names, operator names, or filenames in scene bodies); mockup as one concrete instantiation
 - Medium-follows-surface rule: mockup medium follows the project's external surface (visual products get visual mockups; scripted experiences get scripts; document-and-reading frameworks get narrated prose)
 - Scene-to-scene correspondence: one mockup scene per northstar scene, same order
 - Re-instantiability test: scenes survive substitution of project, operator, filenames, tools
 - Descent from concept: northstar extends a specific concept commitment into phenomenological territory; each scene names which concept claim it pays off
+- Roadmap as Phase 1 sibling: roadmap commits release sequence and points at release artifacts for activation; does not activate releases
 
 **Must not prescribe:**
+
 - Scene count — follows from what the concept commits to
 - Scene content shape beyond the required subsections in `mockup-template.md`
+- Release activation detail — belongs to Phase 2
 
-**Source:** `SPEC.md § Asset Template Specifications` → `northstar-template.md` and `mockup-template.md`.
+**Source:** `SPEC.md § Asset Template Specifications` → `northstar-template.md`, `mockup-template.md`, and `roadmap-template.md`.
 
 ### `phase-2-release-activation.md`
 
 **Must address:**
-- Two jobs of Phase 2: mapping the release sequence (roadmap) and activating the current release (release artifact plus siblings)
+
+- Phase 2 purpose: committing the artifacts that turn a planned release into an active project
 - Release artifact as standalone product framing, not an increment
 - Binding quality standard as input to Phase 3: each constraint passes forward as a structural resolution requirement
 - Release-level test plan as operator-observable outcomes, not mechanism checks
@@ -488,6 +495,7 @@ Per-file specifications below commit the additional content each file must addre
 - Locus rule: instructions governing skill-execution-time Claude do not belong in `CLAUDE.md` or subagent definitions; those govern build-time executors for this release
 
 **Must not prescribe:**
+
 - Release count — follows from roadmap
 - Specific executor roster — follows from what the release requires
 - Test plan row content — follows from the release's definition of done
@@ -943,20 +951,20 @@ Other prose mentions of the child in the parent stay unlinked — the stub is th
 
 Spec-level rows gate individual reference-file and asset correctness. Each row traces to the architecture section or spec section that commits the standard being checked. Mechanism checks (trigger rate, routing, interrogator-before-production) belong to the Phase 5 eval suite, not here.
 
-| id       | check                                                                                                                                                | traces_to                                                               | status  | operator_signoff |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------- | ---------------- |
-| S1-TP-01 | `phase-0-concept-roadmap.md` correctly implements the interrogator kernel-surfacing protocol including all three moves and the recognition criterion | `SPEC.md § Interrogator`                                                | pending |                  |
-| S1-TP-02 | `phase-0-concept-roadmap.md` correctly implements the section sweep pattern — interrogator runs before production, ungrounded sections stubbed       | `SPEC.md § Interrogator`                                                | pending |                  |
-| S1-TP-03 | `phase-1-northstar-mockup.md` correctly implements the abstraction-vs-instantiation split between northstar and mockup                               | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
-| S1-TP-04 | `phase-2-release-activation.md` correctly implements release artifact descent from roadmap and the activation-vs-mapping distinction                 | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
-| S1-TP-05 | `phase-3-architecture.md` correctly implements the inward-facing register constraint and the interrogator translation pattern                        | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
-| S1-TP-06 | `phase-4-spec.md` correctly implements the architecture-to-spec packaging pattern and the locus rule                                                 | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
-| S1-TP-07 | `phase-5-execution-planning.md` correctly implements calibrator sizing against executor definitions and the dual-artifact gate                       | `SPEC.md § Calibrator`, `SPEC.md § Phase 5 Terminal Artifact Structure` | pending |                  |
-| S1-TP-08 | `phase-6-execution.md` correctly implements the supervisor gating pattern, coordinator escalation routing, and the release-level UAT boundary        | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
-| S1-TP-09 | Role definitions in `SKILL.md` body conform to operating-question + failure-examples shape for all three roles                                       | `SPEC.md § Role Definitions`                                            | pending |                  |
-| S1-TP-10 | All six outward-facing asset templates include required frontmatter fields and required body sections per spec                                       | `SPEC.md § Asset Template Specifications`                               | pending |                  |
-| S1-TP-11 | All four inward-facing asset authoring instructions address required topics and omit prescribed-but-excluded content per spec                        | `SPEC.md § Asset Template Specifications`                               | pending |                  |
-| S1-TP-12 | Cross-reference conventions are applied correctly across all produced artifacts — first-instance links, frontmatter lineage, stub sections           | `SPEC.md § Cross-Reference Conventions`                                 | pending |                  |
+| id       | check                                                                                                                                                                      | traces_to                                                               | status  | operator_signoff |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------- | ---------------- |
+| S1-TP-01 | `phase-0-concept.md` correctly implements the interrogator kernel-surfacing protocol including all three moves and the recognition criterion                               | `SPEC.md § Interrogator`                                                | pending |                  |
+| S1-TP-02 | `phase-0-concept.md` correctly implements the section sweep pattern — interrogator runs before production, ungrounded sections stubbed                                     | `SPEC.md § Interrogator`                                                | pending |                  |
+| S1-TP-03 | `phase-1-northstar-mockup-roadmap.md` correctly implements the abstraction-vs-instantiation split between northstar and mockup and the roadmap release-sequence commitment | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
+| S1-TP-04 | `phase-2-release-activation.md` correctly implements release artifact descent from roadmap and the activation-commitment pattern                                           | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
+| S1-TP-05 | `phase-3-architecture.md` correctly implements the inward-facing register constraint and the interrogator translation pattern                                              | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
+| S1-TP-06 | `phase-4-spec.md` correctly implements the architecture-to-spec packaging pattern and the locus rule                                                                       | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
+| S1-TP-07 | `phase-5-execution-planning.md` correctly implements calibrator sizing against executor definitions and the dual-artifact gate                                             | `SPEC.md § Calibrator`, `SPEC.md § Phase 5 Terminal Artifact Structure` | pending |                  |
+| S1-TP-08 | `phase-6-execution.md` correctly implements the supervisor gating pattern, coordinator escalation routing, and the release-level UAT boundary                              | `SPEC.md § Per-Phase Role Application`                                  | pending |                  |
+| S1-TP-09 | Role definitions in `SKILL.md` body conform to operating-question + failure-examples shape for all three roles                                                             | `SPEC.md § Role Definitions`                                            | pending |                  |
+| S1-TP-10 | All six outward-facing asset templates include required frontmatter fields and required body sections per spec                                                             | `SPEC.md § Asset Template Specifications`                               | pending |                  |
+| S1-TP-11 | All four inward-facing asset authoring instructions address required topics and omit prescribed-but-excluded content per spec                                              | `SPEC.md § Asset Template Specifications`                               | pending |                  |
+| S1-TP-12 | Cross-reference conventions are applied correctly across all produced artifacts — first-instance links, frontmatter lineage, stub sections                                 | `SPEC.md § Cross-Reference Conventions`                                 | pending |                  |
 
 ### Test Plan Closure
 
@@ -981,3 +989,5 @@ Phase 5 begins on approval. First Phase 5 work: eval set authoring against § Ro
 - **2026-04-15 — Phase 4 gate closure amendment.** Added seven new top-level sections packaging architectural commitments that had not previously been spec-committed: § Reference File Specifications (covers all seven phase reference files with must-address / must-not-prescribe / source per file), § Build Loop Mechanics, § Escalation Routing, § Session Walls, § Test Plan Layers, § Reference Topology and Directory Constraints, § Model-Tier Targeting, § Voice Constraint on Producer Output. Added § Work Package File Schema as a subsection of § Phase 5 Terminal Artifact Structure committing frontmatter, body sections, and field rules for `work-packages/<id>.md` files. Expanded § Phase 4 Closes When to cover the new sections. Status reverted from `approved` to `draft` pending operator review of the amendment. Release-level UAT boundary in `phase-6-execution.md` reference file spec generalized from R1-specific "dogfooding" language to universal "UAT" language — dogfooding is R1's UAT instantiation, not a framework-level concept. _Why:_ Phase 4 gate check found four architectural commitments unpackaged (reference topology, model-tier targeting, escalation routing, session walls), four partially packaged (file categorization, build loop, test plan layers, voice constraint), zero reference file content specifications, and no work package file schema. The gate required all gaps closed before Phase 5. _Affects:_ Reference file authoring in Phase 6 (now has explicit must-address lists per file), Phase 5 decomposition (now has work package file schema to decompose against), spec-level test plan rows S1-TP-01 through S1-TP-08 (now have content specifications to check against).
 
 - **2026-04-15 — Initial authoring.** Descends from `[[ARCHITECTURE]]`. Covers SKILL.md body structure, per-phase role application with operating questions and failure examples for all three universal roles including the kernel-surfacing protocol and recognition criterion for the interrogator, asset template specifications for all ten assets in `assets/` (six structural templates, four authoring-instruction assets with instance-specific content removed), Execution Configuration section with Todoist fields, Phase 5 terminal artifact structure (`work-instructions.md`, `execution-plan.json`, work package template, Todoist load operation), and cross-reference conventions. Open questions section dropped — Phase 5 deliverables belong in Phase 5; architecture open questions belong in architecture.
+
+- **2026-04-16 — Phase 0/1/2 restructuring propagated from concept amendment.** Reference file `phase-0-concept-roadmap.md` renamed to `phase-0-concept.md`; roadmap content removed from its must-address list. Reference file `phase-1-northstar-mockup.md` renamed to `phase-1-northstar-mockup-roadmap.md`; roadmap release-sequence commitment added to its must-address list. Reference file `phase-2-release-activation.md` updated: "two jobs" framing (mapping + activating) replaced with single-job framing (committing). Per-Phase Role Application table updated: Phase 0 scribe loses roadmap register; Phase 1 scribe gains roadmap register; Phase 1 interrogator gains roadmap grounding check. `roadmap-template.md` frontmatter phase field changed from `0` to `1`. Spec-level test plan rows S1-TP-01 through S1-TP-04 updated with new reference file names and descriptions. _Why:_ descends from `CONCEPT.md` 2026-04-16 amendment relocating roadmap from Phase 0 to Phase 1. _Affects:_ Phase 5 decomposition (reference file names changed), Phase 6 producer output (file names changed).
