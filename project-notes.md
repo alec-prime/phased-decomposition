@@ -85,6 +85,26 @@ _Cut from R1 scope and recorded in `RELEASE.md` §Execution Resourcing under "Me
 
 ### Open
 
+*Empty.*
+### Graduated
+
+#### Framework roles: interrogator, scribe, calibrator
+
+_Landed in `architecture.md` §Role Architecture via the 2026-04-13 initial draft and the 2026-04-13 role-definitions-relocated changelog entry._
+
+### Expelled
+
+#### Role references follow upstream-downstream-feedback pattern
+
+A framework role's runtime references get a first draft at the phase that defines the role, then refine at the phase that first runs the role against reality. First draft commits against documentation and published patterns; refinement amends against empirical signal and writes a changelog entry on the upstream artifact. Authoring a profile at the phase where the role first runs is a role boundary violation — the role consults references, it doesn't create them. Deferring the first draft entirely is the opposite failure: downstream has no anchor to amend against.
+
+Worked example: the calibrator role is defined in Phase 3, and its per-executor profile for Claude Code subagents gets a first draft in Phase 3 from Anthropic's documentation. Phase 5 consults it, finds gaps, and amends with a changelog entry on the upstream architecture.
+
+#### Calibrator references are defaults, not rules
+
+Whatever the calibrator consults — `CLAUDE.md`, an operator profile, Phase 2 references — is a prior, not a binding rule. Live context wins on disagreement. Failure shape: sizing a coding task at 30 minutes because skill-creator's docs suggest that scale, when the live context is a tricky integration that wants larger sizing or a different decomposition. Same shape applies to a future calibrator with a learned operator profile compounding its own biases by treating the prior as authoritative.
+
+
 #### Phase artifacts follow a four-part rhythm
 
 Phase artifacts share a structural rhythm independent of phase or project type: opener, substance, bounds-and-gaps, terminal. Metadata runs parallel and is not part of the rhythm.
@@ -95,24 +115,6 @@ Phase artifacts share a structural rhythm independent of phase or project type: 
 - _Terminal._ Conditions under which the phase closes. Phase 0 is the exception — `concept.md` is itself the terminal.
 
 _Operating question._ Does this artifact orient, commit, scope, and close — and does its substance decomposition descend from what the phase actually commits to, rather than from a template?
-
-#### Calibrator references are defaults, not rules
-
-Whatever the calibrator consults — `CLAUDE.md`, an operator profile, Phase 2 references — is a prior, not a binding rule. Live context wins on disagreement. Failure shape: sizing a coding task at 30 minutes because skill-creator's docs suggest that scale, when the live context is a tricky integration that wants larger sizing or a different decomposition. Same shape applies to a future calibrator with a learned operator profile compounding its own biases by treating the prior as authoritative.
-
-#### Role references follow upstream-downstream-feedback pattern
-
-A framework role's runtime references get a first draft at the phase that defines the role, then refine at the phase that first runs the role against reality. First draft commits against documentation and published patterns; refinement amends against empirical signal and writes a changelog entry on the upstream artifact. Authoring a profile at the phase where the role first runs is a role boundary violation — the role consults references, it doesn't create them. Deferring the first draft entirely is the opposite failure: downstream has no anchor to amend against.
-
-Worked example: the calibrator role is defined in Phase 3, and its per-executor profile for Claude Code subagents gets a first draft in Phase 3 from Anthropic's documentation. Phase 5 consults it, finds gaps, and amends with a changelog entry on the upstream architecture.
-
-### Graduated
-
-#### Framework roles: interrogator, scribe, calibrator
-
-_Landed in `architecture.md` §Role Architecture via the 2026-04-13 initial draft and the 2026-04-13 role-definitions-relocated changelog entry._
-
-### Expelled
 
 #### Calibrator runtime references
 
@@ -129,8 +131,6 @@ These runtime profiles are distinct from skill-authoring references. Skill-autho
 ## spec.md
 
 ### Open
-
-#### 
 
 #### Phase 0 kernel — Phase 0 reference content
 
@@ -203,6 +203,12 @@ Writing a scene surfaces patterns. Patterns that survive dramatization against r
 
 Producer methodology guidance: when authoring reference files, walk the relevant mockup scenes for patterns that survived dramatization, lift them out, and verify re-instantiability before committing the reference entry.
 
+### Graduated
+
+_None yet._
+
+### Expelled
+
 #### Calibrator's relationship to Phase 2 reference documentation
 
 The calibrator needs enough context about each executor to size work without re-decomposition. `CLAUDE.md` captures the agents-as-defined for a release. Unclear whether `CLAUDE.md` alone carries enough substrate, or whether the calibrator also needs the source documentation that informed `CLAUDE.md` (Claude Code subagent docs, skill-creator, etc., for R1).
@@ -210,14 +216,6 @@ The calibrator needs enough context about each executor to size work without re-
 _Two candidate answers._ `CLAUDE.md` only — treats `CLAUDE.md` as a complete compression of the references; risk is the calibrator hitting a sizing question with no fallback. `CLAUDE.md` plus references — treats references as alive throughout the release; risk is references travelling past their stated job and the calibrator drifting on source vs. committed.
 
 _Resolution mechanism._ R1's calibrator runs against `CLAUDE.md` with references available as fallback. Observe which it actually reaches for. Whichever holds graduates into the calibrator role definition (architecture); the other expels.
-
-### Graduated
-
-_None yet._
-
-### Expelled
-
-_None yet._
 
 ---
 
