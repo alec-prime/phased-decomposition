@@ -1,0 +1,186 @@
+{
+  "skill_name": "building-projects-with-claude",
+  "evals": [
+    {
+      "id": 1,
+      "category": "kernel-surfacing-protocol",
+      "prompt": "I've been thinking about this for a while. I want to build an app that helps remote teams feel more connected. Not another Slack or Zoom — something that creates ambient awareness. Like knowing your teammate is in deep focus right now without them having to tell you. I want to start structuring this as a project. Can you help me build out a concept doc?",
+      "expected_output": "Claude loads the skill's phase-0 reference, runs the interrogator, and asks the operator to name what the project is one layer below the surface — without proposing a kernel candidate. Claude does not begin drafting concept.md sections before the kernel is surfaced.",
+      "files": [],
+      "expectations": [
+        "Claude does NOT propose a kernel candidate (e.g., 'it sounds like the kernel might be...')",
+        "Claude asks the operator to articulate what the project is about at a deeper level",
+        "Claude does not begin drafting concept.md sections before the operator has named the kernel",
+        "Claude does not use the word 'kernel' in operator-facing questions",
+        "Claude uses compression prompts (e.g., 'can you say that shorter') to help the operator reach the kernel"
+      ]
+    },
+    {
+      "id": 2,
+      "category": "kernel-surfacing-protocol",
+      "prompt": "I want to create a personal finance tool that uses AI to categorize spending and suggest budget adjustments. Help me write the concept doc for this.",
+      "expected_output": "Claude resists the temptation to slip a kernel claim into its response (e.g., 'so this is really about financial literacy' or 'the core of this is reducing money anxiety'). Instead, Claude asks the operator to go one layer deeper on what the project is actually for.",
+      "files": [],
+      "expectations": [
+        "Claude does NOT embed a kernel claim in a summary or restatement",
+        "Claude does NOT accept a mechanism description ('AI categorizes spending') as the kernel",
+        "Claude asks a 'why does it matter' or 'what is this in service of' style question",
+        "Claude waits for the operator's answer before writing any concept content"
+      ]
+    },
+    {
+      "id": 3,
+      "category": "kernel-surfacing-protocol",
+      "prompt": "I'm building a CLI tool that wraps git commands to enforce conventional commits and branch naming. The kernel is developer workflow standardization. Let's write the concept doc.",
+      "expected_output": "Claude does not accept the operator's stated kernel at face value without running the compression and why-does-it-matter checks. The operator may have named a mechanism or proximate effect rather than the load-bearing center.",
+      "files": [],
+      "expectations": [
+        "Claude does NOT immediately accept 'developer workflow standardization' as the kernel without probing",
+        "Claude asks at least one deepening question — why does standardization matter, what is it in service of",
+        "Claude runs the compression check if the operator's answer is longer than one thought"
+      ]
+    },
+    {
+      "id": 4,
+      "category": "interrogator-before-production",
+      "prompt": "I need to write the architecture doc for my project's R1 release. The concept doc and northstar are done. The release artifact commits to a local-first data model and a plugin architecture. Let's go.",
+      "expected_output": "Claude loads the phase-3 reference file and runs the interrogator before drafting any architecture content. Claude checks each operator statement against upstream artifacts and asks targeted questions where gaps exist, in the operator's register.",
+      "files": [],
+      "expectations": [
+        "Claude does NOT begin writing architecture.md content before checking upstream grounding",
+        "Claude checks whether 'local-first data model' and 'plugin architecture' are grounded in upstream artifacts",
+        "Claude asks gap-closing questions in the operator's register, not in architecture vocabulary",
+        "Claude does not ask the operator to describe system patterns — translates their answers into architectural commitments"
+      ]
+    },
+    {
+      "id": 5,
+      "category": "interrogator-before-production",
+      "prompt": "Let's write the spec for my project. Architecture is approved. I want to package the component library decisions into executable form.",
+      "expected_output": "Claude loads phase-4 reference file and runs the interrogator against architecture before producing spec content. Checks that every spec entry descends from an architecture commitment.",
+      "files": [],
+      "expectations": [
+        "Claude references the architecture document before writing spec content",
+        "Claude does not introduce spec entries that are not grounded in architecture",
+        "Claude asks the operator about gaps between architecture and spec, not about design preferences"
+      ]
+    },
+    {
+      "id": 6,
+      "category": "phase-routing",
+      "prompt": "I have a new project idea I've been thinking about. Help me articulate what it is and write it up so someone else could understand it.",
+      "expected_output": "Claude routes to Phase 0 and loads phase-0-concept.md reference file.",
+      "files": [],
+      "expectations": [
+        "Claude identifies this as Phase 0 work",
+        "Claude loads the phase-0-concept.md reference file",
+        "Claude begins with the interrogator, not with drafting"
+      ]
+    },
+    {
+      "id": 7,
+      "category": "phase-routing",
+      "prompt": "The concept doc is written and approved. I need to illustrate what using this thing actually feels like — the key moments — and then map out what releases we'll ship.",
+      "expected_output": "Claude routes to Phase 1 and loads phase-1-northstar-mockup-roadmap.md reference file.",
+      "files": [],
+      "expectations": [
+        "Claude identifies this as Phase 1 work",
+        "Claude loads the phase-1 reference file",
+        "Claude distinguishes northstar (abstraction) from mockup (instantiation)"
+      ]
+    },
+    {
+      "id": 8,
+      "category": "phase-routing",
+      "prompt": "R1 is scoped in the roadmap. I need to commit what it ships, who builds it, what the quality bar is, and how we know it's done.",
+      "expected_output": "Claude routes to Phase 2 and loads phase-2-release-activation.md reference file.",
+      "files": [],
+      "expectations": [
+        "Claude identifies this as Phase 2 work",
+        "Claude loads the phase-2 reference file",
+        "Claude frames the release as a standalone product, not an increment"
+      ]
+    },
+    {
+      "id": 9,
+      "category": "phase-routing",
+      "prompt": "Architecture is approved, spec is approved. I need to break the spec down into work packages sized for my executors and write the eval set that gates the build loop.",
+      "expected_output": "Claude routes to Phase 5 and loads phase-5-execution-planning.md reference file.",
+      "files": [],
+      "expectations": [
+        "Claude identifies this as Phase 5 work",
+        "Claude loads the phase-5 reference file",
+        "Claude runs the calibrator for work package sizing"
+      ]
+    },
+    {
+      "id": 10,
+      "category": "reference-file-discovery",
+      "prompt": "I'm working on Phase 3 for my project. The release artifact is approved. Let's start the architecture.",
+      "expected_output": "Claude discovers and loads the phase-3-architecture.md reference file from the skill's references/ directory without the operator needing to name the file.",
+      "files": [],
+      "expectations": [
+        "Claude loads phase-3-architecture.md without being told the filename",
+        "Claude follows the SKILL.md routing table to find the correct reference file",
+        "Claude does not ask the operator which reference file to load"
+      ]
+    },
+    {
+      "id": 11,
+      "category": "reference-file-discovery",
+      "prompt": "Time to activate R2. Roadmap says R2 ships the mobile client. Let's write the release artifact.",
+      "expected_output": "Claude discovers and loads phase-2-release-activation.md without prompting.",
+      "files": [],
+      "expectations": [
+        "Claude loads phase-2-release-activation.md without being told the filename",
+        "Claude follows the routing table from SKILL.md"
+      ]
+    },
+    {
+      "id": 12,
+      "category": "interrogator-before-production",
+      "prompt": "I need to write a northstar for my project. The concept doc describes a meal planning app for families with dietary restrictions. Let's illustrate the key moments.",
+      "expected_output": "Claude loads phase-1 reference file and runs the interrogator — checking which concept claims the northstar scenes should pay off — before writing any northstar content.",
+      "files": [],
+      "expectations": [
+        "Claude does NOT begin writing northstar scenes before checking concept grounding",
+        "Claude identifies which concept claims the scenes should pay off",
+        "Claude asks which moments the operator considers most important before composing scenes"
+      ]
+    },
+    {
+      "id": 13,
+      "category": "kernel-surfacing-protocol",
+      "prompt": "I want to build a framework for running design sprints asynchronously. It's basically about making design sprints work for remote teams. That's the kernel — making design sprints async. Can we write the concept doc?",
+      "expected_output": "Claude recognizes 'making design sprints async' as a mechanism, not a kernel, and runs the why-does-it-matter push rather than accepting it.",
+      "files": [],
+      "expectations": [
+        "Claude does NOT accept 'making design sprints async' as the kernel without probing",
+        "Claude recognizes this as a mechanism and asks what it's in service of",
+        "Claude does not use the word 'kernel' in its question to the operator"
+      ]
+    }
+  ],
+  "trigger_evals": [
+    {"query": "ok so I've been noodling on this idea for a couple weeks — it's a browser extension that highlights manipulative dark patterns on websites and explains what they're doing to you psychologically. I want to actually build this thing properly, not just hack it together. Can you help me think through what this is and write it up from scratch?", "should_trigger": true},
+    {"query": "I have a concept doc and northstar already written for my meditation app project. Architecture is approved. Now I need to break the spec down into work packages for my coding agent and write the evals. Phase 5 time.", "should_trigger": true},
+    {"query": "We need to write the release artifact for R2 of our inventory management system. Roadmap says R2 ships the warehouse integration module. The executor roster needs to include a data-migration specialist agent.", "should_trigger": true},
+    {"query": "I'm starting a new project — an open-source library for structured LLM output parsing. I want to articulate what this is, who it's for, what already exists, and what makes this different. Help me build the concept doc.", "should_trigger": true},
+    {"query": "concept doc is done, approved. Time to illustrate what using this thing actually looks like — the northstar scenes, the mockup with concrete project details, and map out the release sequence.", "should_trigger": true},
+    {"query": "I need to stress-test my R1 release against its binding quality standard and figure out the architectural approach. The release artifact commits to offline-first and end-to-end encryption. Help me write architecture.md.", "should_trigger": true},
+    {"query": "My project's architecture is approved. I need to package every architectural commitment into spec-level detail — field schemas, interface contracts, asset specifications — so the producer can author against it.", "should_trigger": true},
+    {"query": "The coordinator is running the build loop but the supervisor keeps returning escalate on the same work package. The failure traces to a spec entry that doesn't match what the architecture committed. I need to amend the spec and re-derive downstream.", "should_trigger": true},
+    {"query": "I've got this half-baked idea for a neighborhood tool swap app — like a little free library but for drills and ladders and stuff. Haven't written anything down yet. Help me figure out what this actually is.", "should_trigger": true},
+    {"query": "I want to plan a birthday party for my daughter next weekend. She's turning 7 and likes unicorns.", "should_trigger": false},
+    {"query": "Can you help me write a Python script that reads a CSV and outputs a summary table? Just a quick one-off.", "should_trigger": false},
+    {"query": "What's the difference between a product requirements document and a product spec?", "should_trigger": false},
+    {"query": "Review this pull request for me — check for bugs, style issues, and missing error handling.", "should_trigger": false},
+    {"query": "I need to set up a CI/CD pipeline for my React app using GitHub Actions. Walk me through it.", "should_trigger": false},
+    {"query": "Help me brainstorm names for my new coffee shop. I want something cozy and literary.", "should_trigger": false},
+    {"query": "Can you explain how Wardley Mapping works? I've heard of it but never used it.", "should_trigger": false},
+    {"query": "Debug this TypeScript error — I'm getting 'Cannot read properties of undefined (reading map)' on line 47.", "should_trigger": false},
+    {"query": "I want to write a blog post about the future of AI agents in software development.", "should_trigger": false},
+    {"query": "Compare Next.js and Remix for a new e-commerce site. Which would you recommend?", "should_trigger": false},
+    {"query": "Help me create a meal plan for the week. I'm vegetarian and trying to eat more protein.", "should_trigger": false}
+  ]
+}

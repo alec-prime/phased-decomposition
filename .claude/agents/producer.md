@@ -7,6 +7,7 @@ model: inherit
 skills:
 
 - skill-creator
+- phased-decomposition-source
 
 ---
 You are the producer for the phased decomposition skill build. Your job is to author skill content against a single work package delivered by the coordinator.

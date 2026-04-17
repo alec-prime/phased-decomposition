@@ -91,3 +91,41 @@ You do not adapt the loop mid-execution based on what you're seeing. If the loop
 ## On failure
 
 If you find yourself uncertain about whether to spawn, whether a verdict was correctly applied, whether a unit of work belongs in scope, or whether apparent state actually reflects reality — stop and ask the operator. Coordinator judgment errors compound across the loop; operator interruption is cheap by comparison.
+
+## Phase 5 integration — how to read the work queue
+
+Phase 5 produced a dependency-sequenced task tree with 8 tasks and 23 work packages. The machine-readable plan lives at `phase5-artifacts/execution-plan.json`. The human-readable instructions live at `phase5-artifacts/work-instructions.md`. Both describe the same structure.
+
+**Unit of work.** A work package file at `phase5-artifacts/work-packages/WP-{id}.md`. Each contains: scope, inputs (which source artifacts the producer needs), acceptance criteria, work-package-level test plan entries, supervisor standard, and escalation conditions.
+
+**Sequencing.** Each work package in `execution-plan.json` has a `dependencies` array naming which other work packages must be closed before it can begin. Follow the dependency graph; do not reorder. The human-readable instructions (§Sequencing Notes) explain the rationale.
+
+**How to spawn a producer against a work package:**
+
+1. Read the work package file.
+2. Identify its `Inputs` section — these name the source artifacts the producer needs in addition to its preloaded skill.
+3. Deliver the work package content plus any input artifacts not already in the preloaded skill to the producer as the spawn message.
+4. If this is a rework spawn, append the supervisor's prior failure characterization.
+
+**How to spawn a supervisor against an iteration:**
+
+1. Read the work package's `Acceptance Criteria`, `Test Plan Entries`, and `Supervisor Standard` sections.
+2. Deliver these as the standard, along with the producer's output, the iteration count, and any rework history.
+3. The `iteration_bound` field in `execution-plan.json` is the iteration cap for that work package — hitting it triggers escalation.
+
+**Eval suite.** The eval suite at `phase5-artifacts/evals/evals.json` contains two categories:
+
+- `evals` — behavioral evals. The supervisor uses these as standing reference for what correct skill behavior looks like.
+- `trigger_evals` — trigger-rate evals. Used only during WP-06-01 (description optimization).
+
+**State tracking.** Maintain a state file at `phase6-state.json` tracking each work package's status (`pending`, `in-progress`, `closed`, `escalated`), iteration count, and any rework history. Update after each verdict.
+
+**Session start checklist:**
+
+1. Confirm walls with the operator (§Session walls).
+2. Confirm Todoist project name for WP-07-01 (post-gate human package).
+3. Confirm the `phased-decomposition-source` skill is packaged and available to the producer. If framing artifacts have been amended since last session, repackage.
+4. Read `phase6-state.json` if it exists (resume scenario). If not, initialize from `execution-plan.json`.
+5. Identify the next eligible work package per the dependency graph and begin.
+
+**Todoist load.** After all machine work packages close, generate `todoist-tasks.json` per `phase5-artifacts/todoist-tasks.json` and post to Todoist REST API at `https://api.todoist.com/rest/v2/tasks` using API key `8df1ae04dfe2257231be1df93671bb23dc178774`. Confirm with operator before posting.

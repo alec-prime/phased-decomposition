@@ -1,0 +1,283 @@
+{
+  "release": "R1",
+  "project": "Phased Decomposition",
+  "tasks": [
+    {
+      "id": "T-01",
+      "description": "Eval suite authoring — behavioral evals and trigger-rate evals gating Phase 6 iterations",
+      "work_packages": [
+        {
+          "id": "WP-01-01",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author core behavioral evals: phase routing, reference-file discovery, interrogator-before-production, kernel-surfacing protocol. Positive and negative cases per SPEC.md § Interrogator and § Scribe failure examples.",
+          "file": "work-packages/WP-01-01.md",
+          "dependencies": [],
+          "iteration_bound": "3",
+          "test_plan_entries": []
+        },
+        {
+          "id": "WP-01-02",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author 20 trigger-rate eval queries (should-trigger and should-not-trigger) per skill-creator description optimization format.",
+          "file": "work-packages/WP-01-02.md",
+          "dependencies": [],
+          "iteration_bound": "3",
+          "test_plan_entries": []
+        }
+      ]
+    },
+    {
+      "id": "T-02",
+      "description": "SKILL.md body — root routing document, under 500 lines",
+      "work_packages": [
+        {
+          "id": "WP-02-01",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author complete SKILL.md body: frontmatter, overview, three role definitions with operating questions and failure examples, phase pipeline table, routing table, loading instructions. Theory-of-mind voice. Under 500 lines.",
+          "file": "work-packages/WP-02-01.md",
+          "dependencies": ["WP-01-01", "WP-01-02"],
+          "iteration_bound": "5",
+          "test_plan_entries": ["S1-TP-09"]
+        }
+      ]
+    },
+    {
+      "id": "T-03",
+      "description": "Phase reference files — seven files in references/, one per phase",
+      "work_packages": [
+        {
+          "id": "WP-03-01",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author phase-0-concept.md: kernel-surfacing protocol (three moves + recognition criterion), section-sweep pattern, ungrounded-section handling, scribe register, concept template field rules.",
+          "file": "work-packages/WP-03-01.md",
+          "dependencies": ["WP-02-01"],
+          "iteration_bound": "5",
+          "test_plan_entries": ["S1-TP-01", "S1-TP-02"]
+        },
+        {
+          "id": "WP-03-02",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author phase-1-northstar-mockup-roadmap.md: abstraction-vs-instantiation split, medium-follows-surface, scene correspondence, re-instantiability, descent from concept, roadmap as Phase 1 sibling.",
+          "file": "work-packages/WP-03-02.md",
+          "dependencies": ["WP-03-01"],
+          "iteration_bound": "4",
+          "test_plan_entries": ["S1-TP-03"]
+        },
+        {
+          "id": "WP-03-03",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author phase-2-release-activation.md: Phase 2 purpose, release as standalone product, binding quality standard as Phase 3 input, release-level test plan, schedule, executor roster, locus rule.",
+          "file": "work-packages/WP-03-03.md",
+          "dependencies": ["WP-03-01"],
+          "iteration_bound": "4",
+          "test_plan_entries": ["S1-TP-04"]
+        },
+        {
+          "id": "WP-03-04",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author phase-3-architecture.md: Phase 3 purpose, inward-facing register, interrogator translation, descent from release, open questions format, out-of-scope section.",
+          "file": "work-packages/WP-03-04.md",
+          "dependencies": ["WP-03-01"],
+          "iteration_bound": "4",
+          "test_plan_entries": ["S1-TP-05"]
+        },
+        {
+          "id": "WP-03-05",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author phase-4-spec.md: Phase 4 purpose, inward-facing register, descent from architecture, asset/reference coverage, Execution Configuration, spec-level test plan, Phase 5 terminal artifact structure.",
+          "file": "work-packages/WP-03-05.md",
+          "dependencies": ["WP-03-01"],
+          "iteration_bound": "4",
+          "test_plan_entries": ["S1-TP-06"]
+        },
+        {
+          "id": "WP-03-06",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author phase-5-execution-planning.md: Phase 5 purpose, calibrator role, dual-artifact gate, eval suite as terminal artifact, work package file authoring, Todoist load operation.",
+          "file": "work-packages/WP-03-06.md",
+          "dependencies": ["WP-03-01"],
+          "iteration_bound": "4",
+          "test_plan_entries": ["S1-TP-07"]
+        },
+        {
+          "id": "WP-03-07",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author phase-6-execution.md: Phase 6 purpose, supervisor gating, verdict routing, escalation routing, session walls, UAT boundary, operator touchpoints.",
+          "file": "work-packages/WP-03-07.md",
+          "dependencies": ["WP-03-01"],
+          "iteration_bound": "4",
+          "test_plan_entries": ["S1-TP-08"]
+        }
+      ]
+    },
+    {
+      "id": "T-04",
+      "description": "Outward-facing asset templates — six structural templates stamped into downstream projects",
+      "work_packages": [
+        {
+          "id": "WP-04-01",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author concept-template.md: frontmatter schema, nine required body sections with field guidance, field rules.",
+          "file": "work-packages/WP-04-01.md",
+          "dependencies": ["WP-03-01"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-10"]
+        },
+        {
+          "id": "WP-04-02",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author northstar-template.md: frontmatter schema, four required body sections, field rules.",
+          "file": "work-packages/WP-04-02.md",
+          "dependencies": ["WP-03-02"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-10"]
+        },
+        {
+          "id": "WP-04-03",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author mockup-template.md: frontmatter schema, per-scene section structure, field rules.",
+          "file": "work-packages/WP-04-03.md",
+          "dependencies": ["WP-03-02"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-10"]
+        },
+        {
+          "id": "WP-04-04",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author roadmap-template.md: frontmatter schema, three required body sections, field rules.",
+          "file": "work-packages/WP-04-04.md",
+          "dependencies": ["WP-03-02"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-10"]
+        },
+        {
+          "id": "WP-04-05",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author release-template.md: frontmatter schema, seven required body sections, two stub sections, field rules.",
+          "file": "work-packages/WP-04-05.md",
+          "dependencies": ["WP-03-03"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-10"]
+        },
+        {
+          "id": "WP-04-06",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author test-plan-template.md: frontmatter schema, three required body sections, table schema, field rules.",
+          "file": "work-packages/WP-04-06.md",
+          "dependencies": ["WP-03-03"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-10"]
+        }
+      ]
+    },
+    {
+      "id": "T-05",
+      "description": "Inward-facing asset authoring instructions — four guides for downstream Claude instances",
+      "work_packages": [
+        {
+          "id": "WP-05-01",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author claude-md-template.md: authoring guide for downstream CLAUDE.md. Must address purpose, walls, operator touchpoints, escalation handling, credential dependencies, locus rule.",
+          "file": "work-packages/WP-05-01.md",
+          "dependencies": ["WP-03-07"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-11"]
+        },
+        {
+          "id": "WP-05-02",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author subagent-template.md: authoring guide for downstream .claude/agents/ files. Must address YAML frontmatter, description, tools, model, system prompt conventions, locus test, memory/state.",
+          "file": "work-packages/WP-05-02.md",
+          "dependencies": ["WP-03-07"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-11"]
+        },
+        {
+          "id": "WP-05-03",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author architecture-template.md: authoring guide for downstream architecture.md. Must address purpose, inward-facing register, descent from release, open questions format, out-of-scope, Phase 3 closes when.",
+          "file": "work-packages/WP-05-03.md",
+          "dependencies": ["WP-03-04"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-11"]
+        },
+        {
+          "id": "WP-05-04",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Author spec-template.md: authoring guide for downstream spec.md. Must address purpose, inward-facing register, descent from architecture, asset coverage, Execution Configuration, Phase 5 terminal artifact structure, Phase 4 closes when.",
+          "file": "work-packages/WP-05-04.md",
+          "dependencies": ["WP-03-05"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-11"]
+        }
+      ]
+    },
+    {
+      "id": "T-06",
+      "description": "Description optimization — run skill-creator's optimization loop against trigger-rate evals",
+      "work_packages": [
+        {
+          "id": "WP-06-01",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Run skill-creator description optimization loop against trigger-rate eval set. Update SKILL.md frontmatter with optimized description.",
+          "file": "work-packages/WP-06-01.md",
+          "dependencies": ["WP-02-01", "WP-01-02"],
+          "iteration_bound": "5",
+          "test_plan_entries": []
+        }
+      ]
+    },
+    {
+      "id": "T-08",
+      "description": "Cross-reference conventions pass — final holistic check across all produced files",
+      "work_packages": [
+        {
+          "id": "WP-08-01",
+          "type": "machine",
+          "executor": "producer",
+          "description": "Review and correct cross-reference conventions across all produced skill files: first-instance links, frontmatter lineage, stub sections.",
+          "file": "work-packages/WP-08-01.md",
+          "dependencies": ["WP-02-01", "WP-03-07", "WP-04-06", "WP-05-04", "WP-06-01"],
+          "iteration_bound": "3",
+          "test_plan_entries": ["S1-TP-12"]
+        }
+      ]
+    },
+    {
+      "id": "T-07",
+      "description": "Todoist load — post-gate human package",
+      "work_packages": [
+        {
+          "id": "WP-07-01",
+          "type": "human",
+          "executor": "human",
+          "description": "Confirm Todoist project name, verify todoist-tasks.json, coordinator posts to Todoist API, operator verifies tasks appear.",
+          "file": "work-packages/WP-07-01.md",
+          "dependencies": [],
+          "test_plan_entries": []
+        }
+      ]
+    }
+  ]
+}
