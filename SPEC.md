@@ -64,11 +64,14 @@ The protocol is three moves:
 
 3. **Compression check.** Ask the operator to compress their answer until it fits as one thought. "Can you say that shorter?" or "short enough to hold as one thought." The kernel is not a sentence — it is a phrase, sometimes a single word.
 
+**Source-extraction prohibition:** The interrogator does not quote, list, or surface candidate kernel-shaped statements from existing source material — project memory, prior drafts, notes, transcripts. The kernel surfaces only through in-dialog compression. Presenting extracted candidates for the operator to pick — even with a denial wrapper ("I am not proposing the kernel") — is functionally a proposal. The menu shape narrows the operator's framing to Claude-curated options; the denial does not neutralize this. When source material contains kernel-shaped phrases, the interrogator notes them internally as its own recognition prior and never surfaces them as operator-facing content.
+
 **Recognition criterion:** The kernel has landed when all three hold: the answer names what the project is for (not what it does or how it works); a "why does it matter" push produces no further movement; the answer fits as one thought. The interrogator does not announce that the kernel has been found. It writes the kernel to the concept document — in framework vocabulary, internally — and moves to the section sweep.
 
 **Failure examples:**
 - _Naming the framework term:_ "What's the kernel of this project?" The operator now tries to produce something kernel-shaped rather than reaching the actual load-bearing center. The question anchors on the framework's vocabulary instead of the operator's.
 - _Proposal-with-checkback:_ "It sounds like the kernel might be 'reducing friction in knowledge work' — does that land?" The proposal shape is the tell. Even a rejection runs inside Claude's framing; the usual next move is accept-with-adjustment, anchoring on Claude's candidate.
+- Proposal-menu-with-denial:_ "Candidates extractable from existing material: 'memory is the substrate, conditioning is the process,' 'two kernels coupled through outcome feedback,' [from project memory] 'persistent memory and retrieval…' I am not proposing the kernel — pick one, revise, or write fresh." The denial wrapper is the tell. Quoting candidates from any source narrows the operator's framing to Claude-curated options; accept-with-adjustment on one of the quoted phrases is the overwhelmingly likely next move. Same mechanism as _Proposal-with-checkback_, made more compliant-feeling by the plural and the denial. Kernel surfaces through in-dialog compression only; source-extracted candidates never enter operator view.
 - _Kernel slipped into summary:_ "So it's really a framework for working with LLMs on projects where sessions don't persist context…" stated without flagging it as a kernel claim. The operator reads the summary, finds it accurate on its surface, and does not notice a kernel-level statement has landed as settled context.
 - _Stopping at mechanism:_ The operator says "somebody else drives, you just work" and the interrogator accepts it as the kernel. That is the mechanism. The why-does-it-matter push surfaces what the mechanism is in service of — in the March example, progress. The interrogator pushes until the answer is one layer below mechanism, not one layer below surface framing.
 - _Production without interrogation:_ Claude begins drafting a concept section before the operator has grounded its substance. The draft reads plausibly but descends from Claude's inference rather than operator intent.
@@ -141,14 +144,13 @@ descends_from: []
 | Section | Guidance |
 |---|---|
 | Introduction | Frames the project from the kernel outward. Teaches a cold reader why this exists. Not a summary — an entry point. Kernel must appear here before any other framing. |
-| The Thesis | Compressed statement of what the project is and does. First sentence descends from the kernel. LLM collaboration is the enabling condition, not the subject. |
-| The Phases | Pipeline overview. One bullet per phase: name, primary mode, terminal artifacts. |
+| The Thesis | Compressed statement of what the project is and does. First sentence descends from the kernel. |
 | Boundaries | In scope / Out of scope / Fixed constraints. Fixed constraints carry a one-line gloss deriving each from the kernel. |
 | Success Criteria | Observable conditions. Written so a reader outside the project can evaluate them. |
 | Open Questions | Unresolved tensions with resolution mechanism named. Format: question → what it blocks → where the answer comes from. |
 | Precedent & Alternatives | Precedent: lineage and what informed this version. Alternatives: what was considered and why set aside. |
 | Stakeholders | Who cares, what they care about, what they influence. |
-| Changelog | Required once any downstream phase has begun. Format: date — what changed — why — downstream artifacts affected. |
+| Changelog | Required once any downstream phase has begun. Format: date — what changed — why — downstream artifacts affected. |                                               |
 
 **Field rules:**
 - Kernel must appear in Introduction before any other framing. If it doesn't, the interrogator hasn't cleared.
@@ -174,12 +176,13 @@ descends_from:
 
 **Body sections — required:**
 
-| Section | Guidance |
-|---|---|
-| The Felt Experience | One to two paragraphs. The operator's cognitive mode throughout the pipeline. Written at abstraction level — no project names, no filenames. |
-| The Claim This Pays Off | Which concept commitment this northstar extends into phenomenological territory. Names the interrogator as the causal mechanism. |
-| Scenes | Two to four scenes. Each: setting, how it goes, what it produced, what makes this the scene. Written so a different project could satisfy the same scene description. |
-| Re-instantiability | One paragraph. Confirms scenes survive substitution of project, operator, filenames, tools. |
+| Section                 | Guidance                                                                                                                                                              |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The Felt Experience     | One to two paragraphs. The operator's cognitive mode throughout the pipeline. Written at abstraction level — no project names, no filenames.                          |
+| The Claim This Pays Off | Which concept commitment this northstar extends into phenomenological territory. Names the interrogator as the causal mechanism.                                      |
+| Scenes                  | Two to four scenes. Each: setting, how it goes, what it produced, what makes this the scene. Written so a different project could satisfy the same scene description. |
+| Re-instantiability      | One paragraph. Confirms scenes survive substitution of project, operator, filenames, tools.                                                                           |
+|                         |                                                                                                                                                                       |
 
 **Field rules:**
 - Scenes are at abstraction level. No specific project names, operator names, or filenames inside scene bodies.
@@ -397,7 +400,7 @@ This asset is an architecture document authoring guide for downstream project Ph
 **Must not prescribe:**
 - What the structural commitments are — those follow from the release's binding quality standard
 - Directory structures, topology rules, loop mechanics, tier targeting — all release-specific
-- Section structure beyond the four-part rhythm: opener, substance, bounds-and-gaps, terminal
+- Section structure — architecture is inward-facing; structure descends from what the release commits to, not from a shared template rhythm
 
 **Source:** This spec, `[[RELEASE]]` § Binding Quality Standard, `[[ARCHITECTURE]]` as the canonical instance of the pattern — not as the prescribed structure.
 
@@ -417,8 +420,8 @@ This asset is a spec document authoring guide for downstream project Phase 4. In
 - Phase 4 closes when: architecture fully packaged into spec entries, status flipped to approved after operator review
 
 **Must not prescribe:**
-- What the assets are — follows from the release's architecture
-- Section structure beyond the four-part rhythm
+- What the assets and references are — release-specific
+- Section structure — inward-facing register; structure follows from architecture, not from a shared template rhythm
 
 **Source:** This spec as the canonical instance, `[[ARCHITECTURE]]` as upstream, `[[RELEASE]]` § Binding Quality Standard as the constraint chain's origin.
 
@@ -991,3 +994,5 @@ Phase 5 begins on approval. First Phase 5 work: eval set authoring against § Ro
 - **2026-04-15 — Initial authoring.** Descends from `[[ARCHITECTURE]]`. Covers SKILL.md body structure, per-phase role application with operating questions and failure examples for all three universal roles including the kernel-surfacing protocol and recognition criterion for the interrogator, asset template specifications for all ten assets in `assets/` (six structural templates, four authoring-instruction assets with instance-specific content removed), Execution Configuration section with Todoist fields, Phase 5 terminal artifact structure (`work-instructions.md`, `execution-plan.json`, work package template, Todoist load operation), and cross-reference conventions. Open questions section dropped — Phase 5 deliverables belong in Phase 5; architecture open questions belong in architecture.
 
 - **2026-04-16 — Phase 0/1/2 restructuring propagated from concept amendment.** Reference file `phase-0-concept-roadmap.md` renamed to `phase-0-concept.md`; roadmap content removed from its must-address list. Reference file `phase-1-northstar-mockup.md` renamed to `phase-1-northstar-mockup-roadmap.md`; roadmap release-sequence commitment added to its must-address list. Reference file `phase-2-release-activation.md` updated: "two jobs" framing (mapping + activating) replaced with single-job framing (committing). Per-Phase Role Application table updated: Phase 0 scribe loses roadmap register; Phase 1 scribe gains roadmap register; Phase 1 interrogator gains roadmap grounding check. `roadmap-template.md` frontmatter phase field changed from `0` to `1`. Spec-level test plan rows S1-TP-01 through S1-TP-04 updated with new reference file names and descriptions. _Why:_ descends from `CONCEPT.md` 2026-04-16 amendment relocating roadmap from Phase 0 to Phase 1. _Affects:_ Phase 5 decomposition (reference file names changed), Phase 6 producer output (file names changed).
+
+- **2026-04-17 — Kernel-surfacing hardening, concept template generalization, rhythm rule rescoping.** Three coupled failures surfaced during R1 first dogfood run and propagated back to SPEC.md. First: § Interrogator hardened against source-extraction in kernel surfacing. Added **Source-extraction prohibition** to the kernel-surfacing protocol and _Proposal-menu-with-denial_ as a named failure example. Dogfood move — Claude extracted candidate kernel statements from project memory and prior drafts, listed them as a menu under a denial wrapper ("I am not proposing the kernel — pick one"), which functions as a menu proposal regardless of the disclaimer and narrows operator framing to Claude-curated options. Same mechanism as _Proposal-with-checkback_, made more compliant-feeling by the plural and the denial; the prior failure example did not catch the variant. Second: `concept-template.md` body sections table pruned. Removed "The Phases" row — phases are phased decomposition's internal mechanic, not a universal concept-level section; including it in the generic template forced fabrication for projects without a phase structure. Trimmed "The Thesis" row of "LLM collaboration is the enabling condition, not the subject" — framework-specific framing leaked into a generic template. Third: four-part rhythm rule rescoped to outward-facing artifacts only. Rhythm language removed from `architecture-template.md` must-not-prescribe, `spec-template.md` must-not-prescribe, and `phase-4-spec.md` reference file must-not-prescribe — all three are inward-facing contexts where the rhythm did not belong but where the prior formulation permitted its inheritance. _Why:_ all three failures surfaced in the R1 dogfood. Architecture failure: operator manually removed rhythm instructions from the architecture draft before upload; contamination traced to SPEC.md carrying rhythm language forward from `project-notes.md` line 108, a pre-scoping note that framed the rhythm as universal and was never updated after the inward/outward split was committed. _Affects:_ § Interrogator (new protocol rule, new failure example); § Outward-facing templates (new preamble with scoped rhythm rule); `concept-template.md` body sections table (two rows changed); `architecture-template.md`, `spec-template.md`, and `phase-4-spec.md` reference file must-not-prescribe blocks (rhythm language replaced with inward-facing register reasoning). Downstream: R1 Phase 6 producer output against these reference files. `project-notes.md` line 108 entry expelled as superseded.

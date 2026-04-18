@@ -1,0 +1,37 @@
+{
+  "session": {
+    "walls": {
+      "iteration_bound": "per-wp (use iteration_bound field from execution-plan.json)",
+      "session_length": "unlimited — operator directed run all remaining",
+      "escalation_mode": "halt-on-escalation"
+    },
+    "todoist_project": "Personal",
+    "wps_closed": 23,
+    "session_length_limit": null
+  },
+  "work_packages": {
+    "WP-01-01": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-01-02": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-02-01": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-03-01": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-03-02": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-03-03": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-03-04": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-03-05": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-03-06": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-03-07": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-04-01": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-04-02": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-04-03": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-04-04": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-04-05": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-04-06": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-05-01": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-05-02": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-05-03": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-05-04": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-06-01": {"status": "closed", "iteration": 1, "rework_history": []},
+    "WP-07-01": {"status": "closed", "iteration": 1, "rework_history": [], "todoist_task_id": "6gPvp2xjmW997CC8"},
+    "WP-08-01": {"status": "closed", "iteration": 2, "rework_history": ["iteration 1: supervisor rework — 4 failures: descends_from missing artifacts in phase-1/2/3 reference files; duplicate wikilink in phase-4-spec.md"]}
+  }
+}
